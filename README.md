@@ -1,10 +1,14 @@
 # ¿Qué es MongoDB?
 
-Es un sistema de bases de datos NoSQL (o sea, no relacional).  
-En lugar de guardar la información en tablas (como lo haría MySQL o SQL Server), MongoDB guarda los datos en documentos parecidos a JSON (un formato de texto estructurado en llaves {}).
+Es un sistema de bases de datos NoSQL (o sea, no relacional).  En lugar de guardar la información en tablas (como lo haría MySQL o SQL Server), MongoDB guarda los datos en documentos parecidos a JSON (un formato de texto estructurado en llaves {}).
 
 Cada "documento" en MongoDB puede tener estructura propia y flexible.  
 Por eso es ideal para trabajar con datos dinámicos, grandes volúmenes o cuando no quieres que todos los registros tengan exactamente las mismas columnas.
+
+# Ahora bien ¿Que és un documento JSON?
+
+Un documento JSON (JavaScript Object Notation) es una estructura de datos que almacena información en formato clave-valor, muy utilizada en programación, especialmente para intercambio de datos entre aplicaciones y almacenamiento en bases de datos NoSQL como MongoDB.
+
 
 ¿Cómo funciona MongoDB a grandes rasgos?
 
