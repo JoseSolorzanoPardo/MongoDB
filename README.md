@@ -34,7 +34,7 @@ En una base de datos relacional (como SQL Server), se tendría algo como aparece
 | 1   | Ana | 25  |
 
 **En MongoDB**, ese mismo dato se guardaría así:
-
+```
 {
 
 "id": 1,
@@ -44,7 +44,7 @@ En una base de datos relacional (como SQL Server), se tendría algo como aparece
 "edad": 25
 
 }
-
+```
 **¿Dónde se usa MongoDB?**
 
 - Aplicaciones web y móviles modernas.
