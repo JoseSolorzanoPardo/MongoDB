@@ -121,8 +121,8 @@ Si deseamos ver las bases de datos que se han creado hasta el momento:
 
 **2\. Crea una base de datos y colección**
 
-- Cambia o crea una nueva base:![Texto
-![Explicación del proceso](img/Grafico3.PNG)
+- Cambia o crea una nueva base:
+  ![Explicación del proceso](img/Grafico3.PNG)
 
 - Crea una colección insertando un documento:
 ```
