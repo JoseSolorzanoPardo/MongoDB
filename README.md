@@ -242,7 +242,7 @@ db.estudiantes.find({ activo: true })
 ```
 ### // Estudiantes de Bogotá o Medellín
 
-db.estudiantes.find({ ciudad: { $in: \["Bogotá", "Cali"\] } })
+db.estudiantes.find({ ciudad: { $in: ["Bogotá", "Cali"] } })
 ```
 #### 9\. **Buscar por teléfono dentro de un objeto anidado**
 ```
