@@ -156,7 +156,7 @@ db.estudiantes.insertMany([
 
 { nombre: "Luisa Torres", edad: 21, curso: "Express.js", direccion: { ciudad: "Manizales", calle: "Calle 10 #5-30" } },
 
-{ nombre: "Daniela Suárez", edad: 23, curso: "Angular", ciudad: "Bogotá", notas: \[4.5, 4.8, 5.0\] },
+{ nombre: "Daniela Suárez", edad: 23, curso: "Angular", ciudad: "Bogotá", notas: [4.5, 4.8, 5.0] },
 
 { nombre: "Andrés Castillo", edad: 25 },
 
