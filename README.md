@@ -103,21 +103,6 @@ mongod --version
 ```
 Si ves un número de versión, por ejemplo, MongoDB shell version v7.0.2, ¡todo está bien!
 
-**5\. ¿Cómo iniciar MongoDB manualmente (por si acaso)?**
-
-Aunque MongoDB normalmente se ejecuta como servicio automáticamente, puedes iniciarlo manualmente:
-
-- Crea una carpeta en tu disco para que MongoDB guarde datos. Por ejemplo:
-```
-mkdir C:\\data\\db
-```
-MongoDB necesita ese directorio para funcionar.
-
-Luego ejecuta en consola:
-```
-mongod --dbpath C:\\data\\db
-```
-Con eso tu servidor MongoDB estará corriendo y podrás empezar a usarlo.
 
 ## Interactuando con MongoDB Compass
 
