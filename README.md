@@ -90,13 +90,13 @@ Ahora vamos a verificar:
 
 - Abre **Símbolo del sistema** (**cmd**).
 - Escribe:
-
+```
 mongo --version
 
 o
 
 mongod --version
-
+```
 Si ves un número de versión, por ejemplo, MongoDB shell version v7.0.2, ¡todo está bien!
 
 **5\. ¿Cómo iniciar MongoDB manualmente (por si acaso)?**
@@ -104,15 +104,15 @@ Si ves un número de versión, por ejemplo, MongoDB shell version v7.0.2, ¡todo
 Aunque MongoDB normalmente se ejecuta como servicio automáticamente, puedes iniciarlo manualmente:
 
 - Crea una carpeta en tu disco para que MongoDB guarde datos. Por ejemplo:
-
+```
 mkdir C:\\data\\db
-
+```
 MongoDB necesita ese directorio para funcionar.
 
 Luego ejecuta en consola:
-
+```
 mongod --dbpath C:\\data\\db
-
+```
 Con eso tu servidor MongoDB estará corriendo y podrás empezar a usarlo.
 
 ## Interactuando con MongoDB Compass
@@ -126,9 +126,9 @@ Con eso tu servidor MongoDB estará corriendo y podrás empezar a usarlo.
 Esto inicia el shell interactivo de MongoDB.
 
 Si deseamos ver las bases de datos que se han creado hasta el momento:
-
+```
 - show dbs
-
+```
 ![Explicación del proceso](img/Grafico2.PNG)
 
 **2\. Crea una base de datos y colección**
@@ -137,8 +137,9 @@ Si deseamos ver las bases de datos que se han creado hasta el momento:
 ![Explicación del proceso](img/Grafico3.PNG)
 
 - Crea una colección insertando un documento:
-  - db.estudiantes.insertOne({ nombre: "Carlos", edad: 21, curso: "MongoDB Básico" })
-
+```
+  db.estudiantes.insertOne({ nombre: "Carlos", edad: 21, curso: "MongoDB Básico" })
+```
 Ahora bien, un **documento en MongoDB** es una unidad de datos en formato **JSON** (internamente BSON) que almacena información estructurada como pares clave-valor. Es equivalente a una fila en una base de datos relacional, pero puede contener datos anidados y arrays.
 
 La ejecución de la anterior sentencia nos dio como resultado lo siguiente:
@@ -154,7 +155,7 @@ Desglosemos la anterior consulta:
     Se representa como un **ObjectId**, que es un tipo especial de MongoDB que incluye marca de tiempo, identificador del servidor, etc.
 
 Ahora bien como sería la inserción de múltiples documentos en una colección:
-
+```
 db.estudiantes.insertMany(\[
 
 { nombre: "Ana Gómez", edad: 20 },
@@ -188,7 +189,7 @@ activo: true
 }
 
 \]);
-
+```
 **3\. Consulta y manipula datos**
 
 - Leer datos:
@@ -197,17 +198,17 @@ activo: true
 #### Filtros básicos
 
 #### 1\. **Buscar por un campo específico**
-
+```
 // Estudiantes del curso "Node.js"
 
 db.estudiantes.find({ curso: "Node.js" })
-
+```
 #### 2\. **Buscar por múltiples condiciones**
-
+```
 // Estudiantes que tengan ciudad "Bogotá" y edad mayor a 21
 
 db.estudiantes.find({ ciudad: "Bogotá", edad: { $gt: 21 } })
-
+```
 | **Operador** | **Significado** | **Ejemplo de uso** |
 | --- | --- | --- |
 | $eq | Igual a | { edad: { $eq: 21 } } |
@@ -220,55 +221,55 @@ db.estudiantes.find({ ciudad: "Bogotá", edad: { $gt: 21 } })
 | $nin | No dentro de una lista | { curso: { $nin: \["React", "Angular"\] } } |
 
 #### 3\. **Buscar documentos que contengan un campo específico**
-
+```
 // Estudiantes que tienen el campo "notas"
 
 db.estudiantes.find({ notas: { $exists: true } })
-
+```
 #### 4\. **Buscar documentos que NO tengan un campo**
-
+```
 #### // Estudiantes que NO tienen el campo "edad"
 
 db.estudiantes.find({ edad: { $exists: false } })
-
+```
 #### 5\. **Buscar dentro de arrays**
-
+```
 #### // Estudiantes que tengan una nota de 5.0
 
 db.estudiantes.find({ notas: 5.0 })
-
+```
 #### 6.**Buscar dentro de objetos anidados**
-
+```
 // Estudiantes que viven en la ciudad "Manizales" (dentro de 'direccion')
 
 db.estudiantes.find({ "direccion.ciudad": "Manizales" })
-
+```
 #### 7\. **Filtrar por booleano**
-
+```
 // Estudiantes activos
 
 db.estudiantes.find({ activo: true })
-
+```
 #### 8\. **Búsqueda con operadores lógicos**
-
+```
 ### // Estudiantes de Bogotá o Medellín
 
 db.estudiantes.find({ ciudad: { $in: \["Bogotá", "Cali"\] } })
-
+```
 #### 9\. **Buscar por teléfono dentro de un objeto anidado**
-
+```
 // Estudiante cuyo teléfono es "3014567890"
 
 db.estudiantes.find({ "contacto.telefono": "3014567890" })
-
+```
 #### 10\. **Ordenar los resultados**
-
+```
 // Estudiantes ordenados por edad descendente
 
 db.estudiantes.find().sort({ edad: -1 })
-
+```
 #### 11.Ordenar por nombre y que solo traiga los nombres específicos
-
+```
 db.estudiantes.find(
 
 {},
@@ -276,13 +277,13 @@ db.estudiantes.find(
 { nombre:1, \_id :0 }
 
 ).sort({ nombre : 1 })
-
+```
 #### 11\. **resultados entre**
-
+```
 // Estudiantes ordenados por edad descendente
 
 db.estudiantes.find({ edad: { $gte: 20, $lte: 24 } })
-
+```
 ## Actualización de documentos en colección
 
 | **Tipo BSON** | **Descripción** | **Ejemplo** |
@@ -301,7 +302,7 @@ db.estudiantes.find({ edad: { $gte: 20, $lte: 24 } })
 **1\. updateOne()**
 
 Actualiza **el primer documento** que cumpla con la condición.
-
+```
 db.estudiantes.updateOne(
 
 { nombre: "Ana Gómez" }, // Filtro
@@ -309,11 +310,11 @@ db.estudiantes.updateOne(
 { $set: { edad: 21 } } // Campo a actualizar
 
 )
-
+```
 **2\. updateMany()**
 
 Actualiza todos los documentos que cumplan la condición.
-
+```
 db.estudiantes.updateMany(
 
 { ciudad: "Bogotá" },
@@ -321,11 +322,11 @@ db.estudiantes.updateMany(
 { $set: { curso: "Fullstack Web" } }
 
 )
-
+```
 **3\. Agregar un nuevo campo**
 
 MongoDB lo agrega si no existe.
-
+```
 db.estudiantes.updateOne(
 
 { nombre: "Carlos Pérez" },
@@ -333,9 +334,9 @@ db.estudiantes.updateOne(
 { $set: { correo: "<carlos@email.com>" } }
 
 )
-
+```
 **4\. Usar $inc para incrementar valores**
-
+```
 db.estudiantes.updateOne(
 
 { nombre: "Daniela Suárez" },
@@ -343,9 +344,9 @@ db.estudiantes.updateOne(
 { $inc: { edad: 1 } } // Incrementa edad en 1
 
 )
-
+```
 **5\. Eliminar un campo con $unset**
-
+```
 db.estudiantes.updateOne(
 
 { nombre: "Laura Martínez" },
@@ -353,11 +354,11 @@ db.estudiantes.updateOne(
 { $unset: { ciudad: "" } }
 
 )
-
+```
 **6\. Reemplazar todo el documento (replaceOne)**
 
 Reemplaza todo, excepto \_id.
-
+```
 db.estudiantes.replaceOne(
 
 { nombre: "Andrés Castillo" },
@@ -365,9 +366,9 @@ db.estudiantes.replaceOne(
 { nombre: "Andrés Castillo", edad: 26, curso: "DevOps" }
 
 )
-
+```
 **7.Añadir en todos los documentos una fecha de registro**
-
+```
 db.estudiantes.updateMany(
 
 {}, // Aplica a todos los documentos
@@ -375,29 +376,30 @@ db.estudiantes.updateMany(
 { $set: { fechaRegistro: new Date("2024-12-31") } }
 
 )
-
+```
 ## Eliminación de documentos en una colección
 
 **1\. Eliminar un solo documento**
 
 Elimina el primer documento que cumpla con la condición.
-
+```
 db.estudiantes.deleteOne({ nombre: "Carlos Pérez" })
-
+```
 **2\. Eliminar varios documentos**
 
 Elimina todos los documentos que coincidan con el filtro.
-
+```
 db.estudiantes.deleteMany({ ciudad: "Bogotá" })
-
+```
 **3\. Eliminar todos los documentos**
 
 Esto borra el contenido de la colección pero no elimina la colección en sí:
-
+```
 db.estudiantes.deleteMany({})
-
+```
 **4\. Eliminar toda la colección (estructura incluida)**
 
 Esto elimina la colección completa, no solo sus documentos:
-
+```
 db.estudiantes.drop()
+```
