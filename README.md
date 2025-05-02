@@ -144,7 +144,7 @@ Desglosemos la anterior consulta:
 
 Ahora bien como sería la inserción de múltiples documentos en una colección:
 ```
-db.estudiantes.insertMany(\[
+db.estudiantes.insertMany([
 
 { nombre: "Ana Gómez", edad: 20 },
 
@@ -176,7 +176,7 @@ activo: true
 
 }
 
-\]);
+]);
 ```
 **3\. Consulta y manipula datos**
 
