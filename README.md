@@ -262,7 +262,7 @@ db.estudiantes.find(
 
 {},
 
-{ nombre:1, \_id :0 }
+{ nombre:1, _id :0 }
 
 ).sort({ nombre : 1 })
 ```
